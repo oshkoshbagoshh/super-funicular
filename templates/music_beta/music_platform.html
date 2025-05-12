@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}TFN Media - CTV Music Platform{% endblock %}
+
+{% block content %}
+<!-- Music Platform Header -->
+<section id="music-header" class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold">CTV Music Platform</h1>
+                <p class="lead">Discover and enjoy music from various genres</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/hero-image.svg' %}" alt="Music Platform" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Music Player Section -->
+<section id="music-player" class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Genres Sidebar -->
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Genres</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for genre in genres %}
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">{{ genre.name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Artists</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for artist in artists %}
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none">{{ artist.name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <!-- Now Playing -->
+                <div class="card mb-4 music-player-card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Now Playing</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <img src="https://via.placeholder.com/300" alt="Album Cover" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-8">
+                                <h4 id="current-track-title">Select a track to play</h4>
+                                <p id="current-track-artist" class="text-muted">Artist</p>
+                                <p id="current-track-album" class="text-muted">Album</p>
+                                
+                                <div class="audio-player mt-3">
+                                    <audio id="audio-player" controls class="w-100">
+                                        <source src="" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Albums -->
+                <h2 class="mb-4">Albums</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    {% for album in albums %}
+                    <div class="col">
+                        <div class="card h-100 album-card">
+                            <img src="{{ album.cover_image }}" class="card-img-top" alt="{{ album.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ album.title }}</h5>
+                                <p class="card-text">{{ album.artist.name }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        {% for genre in album.genre.all %}
+                                            {{ genre.name }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Tracks -->
+                <h2 class="mb-4">Tracks</h2>
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">All Tracks</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Artist</th>
+                                    <th scope="col">Album</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Play</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for track in tracks %}
+                                <tr class="track-row" data-audio="{{ track.audio_file }}" data-title="{{ track.title }}" data-artist="{{ track.artist.name }}" data-album="{{ track.album.title }}">
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ track.title }}</td>
+                                    <td>{{ track.artist.name }}</td>
+                                    <td>{{ track.album.title }}</td>
+                                    <td>{{ track.duration }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary play-btn">
+                                            <i class="bi bi-play-fill"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Future Features Section -->
+<section id="future-features" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Coming Soon</h2>
+            <p class="lead">Future features powered by machine learning</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-music-note-list fs-1 text-primary mb-3"></i>
+                        <h3 class="card-title">Smart Playlists</h3>
+                        <p class="card-text">AI-generated playlists based on your listening habits and preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-soundwave fs-1 text-primary mb-3"></i>
+                        <h3 class="card-title">Genre Classification</h3>
+                        <p class="card-text">Automatic genre classification using machine learning algorithms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up fs-1 text-primary mb-3"></i>
+                        <h3 class="card-title">Mood Analysis</h3>
+                        <p class="card-text">Analyze the mood of songs and recommend music based on your current mood.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for the music player -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audioPlayer = document.getElementById('audio-player');
+        const currentTrackTitle = document.getElementById('current-track-title');
+        const currentTrackArtist = document.getElementById('current-track-artist');
+        const currentTrackAlbum = document.getElementById('current-track-album');
+        const playButtons = document.querySelectorAll('.play-btn');
+        
+        // Add click event to all play buttons
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const trackRow = this.closest('.track-row');
+                const audioSrc = trackRow.dataset.audio;
+                const title = trackRow.dataset.title;
+                const artist = trackRow.dataset.artist;
+                const album = trackRow.dataset.album;
+                
+                // Update the audio player
+                audioPlayer.src = audioSrc;
+                audioPlayer.load();
+                audioPlayer.play();
+                
+                // Update the now playing information
+                currentTrackTitle.textContent = title;
+                currentTrackArtist.textContent = artist;
+                currentTrackAlbum.textContent = album;
+            });
+        });
+    });
+</script>
+{% endblock %}
