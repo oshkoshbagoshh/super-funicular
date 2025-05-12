@@ -25,6 +25,23 @@
         <div class="row">
             <!-- Genres Sidebar -->
             <div class="col-md-3">
+                <!-- Search Bar -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Search</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="search-form" class="mb-2">
+                            <div class="input-group">
+                                <input type="text" id="search-input" class="form-control" placeholder="Search...">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
                         <h3 class="card-title h5 mb-0">Genres</h3>
@@ -39,7 +56,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         <h3 class="card-title h5 mb-0">Artists</h3>
@@ -48,14 +65,19 @@
                         <ul class="list-group list-group-flush">
                             {% for artist in artists %}
                             <li class="list-group-item">
-                                <a href="#" class="text-decoration-none">{{ artist.name }}</a>
+                                <div class="d-flex align-items-center">
+                                    <div class="artist-image-container me-2" style="width: 40px; height: 40px; overflow: hidden; border-radius: 50%;">
+                                        <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid">
+                                    </div>
+                                    <a href="#" class="text-decoration-none">{{ artist.name }}</a>
+                                </div>
                             </li>
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Main Content -->
             <div class="col-md-9">
                 <!-- Now Playing -->
@@ -72,7 +94,7 @@
                                 <h4 id="current-track-title">Select a track to play</h4>
                                 <p id="current-track-artist" class="text-muted">Artist</p>
                                 <p id="current-track-album" class="text-muted">Album</p>
-                                
+
                                 <div class="audio-player mt-3">
                                     <audio id="audio-player" controls class="w-100">
                                         <source src="" type="audio/mpeg">
@@ -83,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Albums -->
                 <h2 class="mb-4">Albums</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
@@ -106,7 +128,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                
+
                 <!-- Tracks -->
                 <h2 class="mb-4">Tracks</h2>
                 <div class="card">
@@ -190,33 +212,35 @@
 
 <!-- JavaScript for the music player -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const audioPlayer = document.getElementById('audio-player');
-        const currentTrackTitle = document.getElementById('current-track-title');
-        const currentTrackArtist = document.getElementById('current-track-artist');
-        const currentTrackAlbum = document.getElementById('current-track-album');
-        const playButtons = document.querySelectorAll('.play-btn');
-        
+    $(document).ready(function() {
+        const audioPlayer = $('#audio-player')[0];
+        const currentTrackTitle = $('#current-track-title');
+        const currentTrackArtist = $('#current-track-artist');
+        const currentTrackAlbum = $('#current-track-album');
+
         // Add click event to all play buttons
-        playButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const trackRow = this.closest('.track-row');
-                const audioSrc = trackRow.dataset.audio;
-                const title = trackRow.dataset.title;
-                const artist = trackRow.dataset.artist;
-                const album = trackRow.dataset.album;
-                
-                // Update the audio player
-                audioPlayer.src = audioSrc;
-                audioPlayer.load();
-                audioPlayer.play();
-                
-                // Update the now playing information
-                currentTrackTitle.textContent = title;
-                currentTrackArtist.textContent = artist;
-                currentTrackAlbum.textContent = album;
-            });
+        $('.play-btn').on('click', function() {
+            const trackRow = $(this).closest('.track-row');
+            const audioSrc = trackRow.data('audio');
+            const title = trackRow.data('title');
+            const artist = trackRow.data('artist');
+            const album = trackRow.data('album');
+
+            // Update the audio player
+            audioPlayer.src = audioSrc;
+            audioPlayer.load();
+            audioPlayer.play();
+
+            // Update the now playing information
+            currentTrackTitle.text(title);
+            currentTrackArtist.text(artist);
+            currentTrackAlbum.text(album);
         });
+
+        // Add search results container after the search form
+        if ($('#search-form').length && !$('#search-results').length) {
+            $('#search-form').after('<div id="search-results" class="mt-3"></div>');
+        }
     });
 </script>
 {% endblock %}

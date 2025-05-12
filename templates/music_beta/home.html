@@ -11,10 +11,132 @@
             <div class="col-md-6">
                 <h1 class="display-4 fw-bold">Welcome to TFN Media</h1>
                 <p class="lead">Professional media services for all your needs</p>
-                <a href="#contact" class="btn btn-light btn-lg mt-3">Get Started</a>
+                <div class="mt-3">
+                    <a href="#signup-section" class="btn btn-light btn-lg me-2">Sign Up</a>
+                    <a href="#search-section" class="btn btn-outline-light btn-lg">Search</a>
+                </div>
             </div>
             <div class="col-md-6">
                 <img src="{% static 'images/hero-image.svg' %}" alt="Hero Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section id="search-section" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Search</h2>
+            <p class="lead">Find music, artists, and ad campaigns</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="search-form" class="mb-4">
+                    <div class="input-group">
+                        <input type="text" id="search-input" class="form-control form-control-lg" placeholder="Search for artists, albums, tracks, or ad campaigns">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search"></i> Search
+                        </button>
+                    </div>
+                </form>
+                <div id="search-results">
+                    <!-- Search results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Signup and Ad Campaign Section -->
+<section id="signup-section" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Sign Up & Upload Ad Campaign</h2>
+            <p class="lead">Join our platform and share your ad campaigns</p>
+        </div>
+        <div class="row">
+            <!-- Signup Form -->
+            <div id="signup-container" class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Create an Account</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="signup-success" class="alert alert-success" style="display: none;"></div>
+                        <div id="signup-error" class="alert alert-danger" style="display: none;"></div>
+                        <form id="signup-form">
+                            <div class="mb-3">
+                                {{ signup_form.username.label_tag }}
+                                {{ signup_form.username }}
+                                <div class="invalid-feedback">Please enter a username.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ signup_form.email.label_tag }}
+                                {{ signup_form.email }}
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ signup_form.password.label_tag }}
+                                {{ signup_form.password }}
+                                <div class="invalid-feedback">Please enter a password.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ signup_form.confirm_password.label_tag }}
+                                {{ signup_form.confirm_password }}
+                                <div id="password-mismatch" class="invalid-feedback" style="display: none;">Passwords do not match.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Campaign Upload Form -->
+            <div id="ad-campaign-container" class="col-md-6" style="display: none;">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title h5 mb-0">Upload Ad Campaign</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="ad-campaign-success" class="alert alert-success" style="display: none;"></div>
+                        <div id="ad-campaign-error" class="alert alert-danger" style="display: none;"></div>
+                        <form id="ad-campaign-form">
+                            <div class="mb-3">
+                                {{ ad_campaign_form.title.label_tag }}
+                                {{ ad_campaign_form.title }}
+                                <div class="invalid-feedback">Please enter a title.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ ad_campaign_form.description.label_tag }}
+                                {{ ad_campaign_form.description }}
+                                <div class="invalid-feedback">Please enter a description.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ ad_campaign_form.video.label_tag }}
+                                {{ ad_campaign_form.video }}
+                                <div class="invalid-feedback">Please upload a video.</div>
+                                <small class="form-text text-muted">For demo purposes, a placeholder video will be used.</small>
+                            </div>
+                            <div class="mb-3">
+                                {{ ad_campaign_form.genre.label_tag }}
+                                {{ ad_campaign_form.genre }}
+                                <div class="invalid-feedback">Please select a genre.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ ad_campaign_form.mood.label_tag }}
+                                {{ ad_campaign_form.mood }}
+                                <div class="invalid-feedback">Please select a mood.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ ad_campaign_form.target_audience.label_tag }}
+                                {{ ad_campaign_form.target_audience }}
+                                <div class="invalid-feedback">Please select a target audience.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload Campaign</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -127,19 +249,56 @@
             <h2 class="display-5 fw-bold">About Us</h2>
             <p class="lead">Learn more about TFN Media</p>
         </div>
-        <div class="row align-items-center">
+        <div class="row align-items-center mb-5">
             <div class="col-md-6">
                 <h3>Company Overview</h3>
                 <p>TFN Media is a full-service media production company specializing in music production, video production, and photography. We are dedicated to delivering high-quality media solutions for businesses and individuals.</p>
-                <h3 class="mt-4">Team Introduction</h3>
-                <p>Our team consists of experienced professionals with expertise in various aspects of media production. We work collaboratively to ensure that each project meets our high standards of quality.</p>
+                <h3 class="mt-4">Our Mission</h3>
+                <p>Our mission is to empower creators and businesses with cutting-edge media solutions that captivate audiences and drive engagement. We believe in the power of storytelling through various media formats and strive to help our clients tell their stories in the most compelling way possible.</p>
+                <h3 class="mt-4">Company History</h3>
+                <p>Founded in 2015, TFN Media began as a small music production studio in Nashville. Over the years, we've expanded our services to include video production, photography, and digital marketing. Today, we serve clients across the United States and have established ourselves as a leader in the media production industry.</p>
             </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">About Nathan</h3>
                         <p class="card-text">Nathan is the founder and creative director of TFN Media. With over 10 years of experience in the industry, he has worked with numerous clients to bring their visions to life through various media formats.</p>
-                        <p class="card-text">His passion for media production and commitment to excellence has established TFN Media as a trusted name in the industry.</p>
+                        <p class="card-text">His passion for media production and commitment to excellence has established TFN Media as a trusted name in the industry. Nathan holds a degree in Audio Engineering from Belmont University and has worked with Grammy-winning artists throughout his career.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Our Team</h3>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+                        <h4 class="card-title">Sarah Johnson</h4>
+                        <p class="text-muted">Head of Video Production</p>
+                        <p class="card-text">Sarah brings over 8 years of experience in video production, having worked on commercials, music videos, and documentaries. Her creative vision and technical expertise ensure that every video project exceeds client expectations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+                        <h4 class="card-title">Michael Rodriguez</h4>
+                        <p class="text-muted">Lead Audio Engineer</p>
+                        <p class="card-text">Michael is our lead audio engineer with a passion for creating immersive soundscapes. His technical knowledge and musical background make him an invaluable asset to our music production team.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+                        <h4 class="card-title">Emily Chen</h4>
+                        <p class="text-muted">Photography Director</p>
+                        <p class="card-text">Emily leads our photography department with an eye for detail and composition. Her work has been featured in major publications, and she brings a unique perspective to every photography project.</p>
                     </div>
                 </div>
             </div>
