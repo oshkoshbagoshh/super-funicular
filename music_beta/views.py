@@ -222,11 +222,13 @@ def service_request(request):
             Service Type: {form.cleaned_data['service_type']}
             Message: {form.cleaned_data['message']}
             """
+            # Use development email from settings
+            recipient_email = getattr(settings, 'DEVELOPER_EMAIL', settings.DEFAULT_FROM_EMAIL)
             send_mail(
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                ['hello@tfnms.co'],
+                [recipient_email],
                 fail_silently=False,
             )
 

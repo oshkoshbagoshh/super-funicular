@@ -49,3 +49,42 @@ If you want to use the Pexels API for placeholder images:
   ```
   pip install Pillow
   ```
+- For fake data generation:
+  ```
+  pip install Faker requests
+  ```
+
+## Faker Factory
+
+The project includes a faker factory to load the database with sample data. This is useful for development and testing purposes.
+
+### Usage
+
+To generate fake data, run the following command:
+
+```bash
+python manage.py generate_fake_data
+```
+
+This will create:
+- 10 genres
+- 20 artists with images from Unsplash
+- 30 albums with cover images from Unsplash
+- 100 tracks
+- 15 users
+- 10 ad campaigns with video placeholders from Unsplash
+- 5 service requests
+
+You can customize the number of entities to create by using the following options:
+
+```bash
+python manage.py generate_fake_data --genres 5 --artists 10 --albums 15 --tracks 50 --users 8 --ad_campaigns 5 --service_requests 3
+```
+
+## Email Configuration
+
+All form submissions are sent to the development email specified in settings.py. By default, this is set to `developer@tfnms.co`.
+
+The email backend is set to console backend for development, so emails will be printed to the console instead of being sent.
+
+To change the development email, update the `DEVELOPER_EMAIL` setting in `tfn_ctv/settings.py`.

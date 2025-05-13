@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="13be34ff-8b15-4b10-9803-6b03f1fd25b4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/tfn_ctv.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="13be34ff-8b15-4b10-9803-6b03f1fd25b4" name="Changes" comment="Add models, migrations, forms, and templates for core features&#10;&#10;This commit introduces models for `ServiceRequest`, `User`, and updates existing models to support file uploads (e.g., artist images, album covers, audio files). It also adds forms for service requests, user signup, and ad campaign creation. New templates for service requests and enhanced JavaScript functionality (e.g., form validation, search, and music player) are included.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Task" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "oshkoshbagoshh"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:oshkoshbagoshh/super-funicular.git",
+    "accountId": "d5cbcc2a-a23e-403d-ac78-f39f5aa95cbc"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2x0S8glZ3HSrAmptnn5D2hWnTau" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,10 +51,23 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ],
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -78,10 +112,50 @@
       <option name="presentableId" value="Default" />
       <updated>1747073339476</updated>
       <workItem from="1747073340531" duration="60000" />
+      <workItem from="1747073407590" duration="11927000" />
     </task>
+    <task id="LOCAL-00001" summary="Add initial structure with styling, scripts, and templates&#10;&#10;This commit introduces the foundational structure for the project, including static assets like CSS, JavaScript, and SVGs, along with Django views and templates. It establishes the base layout, homepage, and core sections for streamlined media services.">
+      <option name="closed" value="true" />
+      <created>1747077004120</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747077004120</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initialize Django apps and project structure&#10;&#10;Added initial `__init__.py`, `apps.py`, and other setup files for `ad_spend`, `music_beta`, and `tfn_ctv` apps. Included ASGI configuration for `tfn_ctv` and IntelliJ database source configuration.">
+      <option name="closed" value="true" />
+      <created>1747080013243</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747080013243</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add models, migrations, forms, and templates for core features&#10;&#10;This commit introduces models for `ServiceRequest`, `User`, and updates existing models to support file uploads (e.g., artist images, album covers, audio files). It also adds forms for service requests, user signup, and ad campaign creation. New templates for service requests and enhanced JavaScript functionality (e.g., form validation, search, and music player) are included.">
+      <option name="closed" value="true" />
+      <created>1747087336405</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747087336405</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add models, migrations, forms, and templates for core features&#10;&#10;This commit introduces models for `ServiceRequest`, `User`, and updates existing models to support file uploads (e.g., artist images, album covers, audio files). It also adds forms for service requests, user signup, and ad campaign creation. New templates for service requests and enhanced JavaScript functionality (e.g., form validation, search, and music player) are included.">
+      <option name="closed" value="true" />
+      <created>1747087360951</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747087360951</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add initial structure with styling, scripts, and templates&#10;&#10;This commit introduces the foundational structure for the project, including static assets like CSS, JavaScript, and SVGs, along with Django views and templates. It establishes the base layout, homepage, and core sections for streamlined media services." />
+    <MESSAGE value="Initialize Django apps and project structure&#10;&#10;Added initial `__init__.py`, `apps.py`, and other setup files for `ad_spend`, `music_beta`, and `tfn_ctv` apps. Included ASGI configuration for `tfn_ctv` and IntelliJ database source configuration." />
+    <MESSAGE value="Add models, migrations, forms, and templates for core features&#10;&#10;This commit introduces models for `ServiceRequest`, `User`, and updates existing models to support file uploads (e.g., artist images, album covers, audio files). It also adds forms for service requests, user signup, and ad campaign creation. New templates for service requests and enhanced JavaScript functionality (e.g., form validation, search, and music player) are included." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add models, migrations, forms, and templates for core features&#10;&#10;This commit introduces models for `ServiceRequest`, `User`, and updates existing models to support file uploads (e.g., artist images, album covers, audio files). It also adds forms for service requests, user signup, and ad campaign creation. New templates for service requests and enhanced JavaScript functionality (e.g., form validation, search, and music player) are included." />
   </component>
 </project>
